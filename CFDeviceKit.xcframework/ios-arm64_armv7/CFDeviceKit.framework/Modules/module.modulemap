@@ -1,0 +1,11 @@
+framework module CFDeviceKit {
+  umbrella header "CFDeviceKit.h"
+
+  export *
+  module * { export * }
+}
+
+module CFDeviceKit.Swift {
+    header "CFDeviceKit-Swift.h"
+    requires objc
+}

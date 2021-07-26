@@ -1,0 +1,499 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.4.2 (swiftlang-1205.0.28.2 clang-1205.0.19.57)
+// swift-module-flags: -target armv7-apple-ios9.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -Onone -module-name CFDeviceKit
+@_exported import CFDeviceKit
+import CoreBluetooth
+import Foundation
+import Swift
+import UIKit
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objcMembers public class CFDeviceModel : CFDeviceKit.CFCodableModel {
+  @objc public var name: Swift.String
+  @objc public var uuid: Swift.String
+  @objc public var macAddress: Swift.String
+  @objc public var identifier: Swift.Int
+  @objc public var rssiValue: Swift.String
+  @objc public var peripheral: CoreBluetooth.CBPeripheral?
+  @objc public var connectionState: CFDeviceKit.CFConnectionState
+  @objc public var communicatinHandler: CFDeviceKit.CFCommunicationHandler {
+    @objc get
+    @objc set(value)
+  }
+  @objc public var dataSyncHandler: CFDeviceKit.CFDataSyncHandler {
+    @objc get
+    @objc set(value)
+  }
+  @objc override dynamic public var debugDescription: Swift.String {
+    @objc get
+  }
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @objcMembers public class CFStepTargetModel : ObjectiveC.NSObject {
+  @objc public var stepTarget: Swift.Int
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc @objcMembers public class CFScreenTextModel : ObjectiveC.NSObject {
+  @objc public var textToShow: Swift.String
+  @objc public init(text: Swift.String)
+  @objc override dynamic public init()
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc public class CFCodableModel : ObjectiveC.NSObject, Swift.Codable {
+  @objc override dynamic public init()
+  @objc deinit
+  public func encode(to encoder: Swift.Encoder) throws
+  required public init(from decoder: Swift.Decoder) throws
+}
+@_hasMissingDesignatedInitializers @objcMembers public class CustomLog {
+  final public let shared: CFDeviceKit.CustomLog
+  public static func log<T>(_ message: T)
+  @objc deinit
+}
+@objc @_hasMissingDesignatedInitializers @objcMembers public class CFCommunicationHandler : ObjectiveC.NSObject {
+  @objc override dynamic public init()
+  @objc deinit
+}
+extension CFCommunicationHandler {
+  @objc dynamic public func setMcuDate(model: CFDeviceKit.CFMcuDateInfoModel, completion: CFDeviceKit.CFCommandStateCallback?)
+  @objc dynamic public func getMcuDate(completion: ((CFDeviceKit.CFCommandState, CFDeviceKit.CFMcuDateInfoModel?) -> Swift.Void)?)
+  @objc dynamic public func setReminder(model: CFDeviceKit.CFReminderModel, completion: CFDeviceKit.CFCommandStateCallback?)
+  @objc dynamic public func getReminder(completion: ((CFDeviceKit.CFCommandState, CFDeviceKit.CFReminderModel?) -> Swift.Void)?)
+  @objc dynamic public func setReminderInterval(model: CFDeviceKit.CFReminderIntervalModel, completion: CFDeviceKit.CFCommandStateCallback?)
+  @objc dynamic public func getReminderInterval(completion: ((CFDeviceKit.CFCommandState, CFDeviceKit.CFReminderIntervalModel?) -> Swift.Void)?)
+  @objc dynamic public func showTextOnScreen(model: CFDeviceKit.CFScreenTextModel, completion: CFDeviceKit.CFCommandStateCallback?)
+  @objc dynamic public func setSystemSettings(model: CFDeviceKit.CFSystemSettingsModel, completion: CFDeviceKit.CFCommandStateCallback?)
+  @objc dynamic public func getSystemSettings(completion: ((CFDeviceKit.CFCommandState, CFDeviceKit.CFSystemSettingsModel?) -> Swift.Void)?)
+  @objc dynamic public func setAlarmClock(model: CFDeviceKit.CFAlarmClockModel, completion: CFDeviceKit.CFCommandStateCallback?)
+  @objc dynamic public func getAlarmClock(index: Swift.Int, completion: ((CFDeviceKit.CFCommandState, CFDeviceKit.CFAlarmClockModel?) -> Swift.Void)?)
+  @objc dynamic public func getSystemInfo(infoType: CFDeviceKit.CFSystemInfoType, completion: ((CFDeviceKit.CFCommandState, CFDeviceKit.CFSystemInfomationModel?) -> Swift.Void)?)
+  @objc dynamic public func setSystemInfo(infoType: CFDeviceKit.CFSystemInfoType, model: CFDeviceKit.CFSystemInfomationModel, completion: CFDeviceKit.CFCommandStateCallback?)
+  @objc dynamic public func getMotorUsageData(completion: ((CFDeviceKit.CFCommandState, CFDeviceKit.CFMotorUsageModel?) -> Swift.Void)?)
+  @objc dynamic public func clearMotorUsageData(completion: CFDeviceKit.CFCommandStateCallback?)
+  @objc dynamic public func getScreenUsageData(completion: ((CFDeviceKit.CFCommandState, CFDeviceKit.CFScreenUsageModel?) -> Swift.Void)?)
+  @objc dynamic public func clearScreenUsageData(completion: CFDeviceKit.CFCommandStateCallback?)
+  @objc dynamic public func getHeartRateUsageData(completion: ((CFDeviceKit.CFCommandState, CFDeviceKit.CFHeartRateUsageModel?) -> Swift.Void)?)
+  @objc dynamic public func clearHeartRateUsageData(completion: CFDeviceKit.CFCommandStateCallback?)
+  @objc dynamic public func getBluetoothUsageData(completion: ((CFDeviceKit.CFCommandState, CFDeviceKit.CFBluetoothUsageModel?) -> Swift.Void)?)
+  @objc dynamic public func clearBluetoothUsageData(completion: CFDeviceKit.CFCommandStateCallback?)
+  @objc dynamic public func systemOperation(operationType: CFDeviceKit.CFDeviceOperationType, completion: ((CFDeviceKit.CFCommandState) -> Swift.Void)?)
+  @objc dynamic public func getWeekHealthData(dataType: CFDeviceKit.CFWeekHealthDataType, completion: ((CFDeviceKit.CFCommandState, [CFDeviceKit.CFWeekHealthDataModel]?) -> Swift.Void)?)
+}
+extension CFCommunicationHandler {
+  @objc dynamic public func setStepTarget(model: CFDeviceKit.CFStepTargetModel, completion: ((CFDeviceKit.CFCommandState) -> Swift.Void)?)
+  @objc dynamic public func getStepTarget(completion: ((CFDeviceKit.CFCommandState, CFDeviceKit.CFStepTargetModel?) -> Swift.Void)?)
+}
+@objc public enum CFDeviceOperationType : Swift.Int {
+  case factoryTest1
+  case factoryTest2
+  case reboot
+  case shutdown
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objcMembers public class CFBLEManager : ObjectiveC.NSObject {
+  @objc public static var shared: CFDeviceKit.CFBLEManager
+  @objc public var connectionHandler: CFDeviceKit.CFConnectionHandler!
+  @objc public var currentDevice: CFDeviceKit.CFDeviceModel?
+  @objc weak public var bleManagerDelegate: CFDeviceKit.CFCentralManagerDelegate?
+  @objc deinit
+}
+extension CFBLEManager {
+  @objc dynamic public func addDeviceDelegate(_ aDelegate: CFDeviceKit.CFDeviceDelegate)
+}
+@objc public enum CFWeekHealthDataType : Swift.Int {
+  case unknown
+  case step
+  case heartRate
+  case bloodOxygen
+  case bloodPressure
+  case bodyTemperature
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc @_inheritsConvenienceInitializers @objcMembers public class CFWeekHealthDataModel : ObjectiveC.NSObject {
+  @objc public var dataType: CFDeviceKit.CFWeekHealthDataType {
+    @objc get
+  }
+  @objc public var timeInterval: Swift.Double
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @objcMembers public class CFWeekStepsModel : CFDeviceKit.CFWeekHealthDataModel {
+  @objc override public var dataType: CFDeviceKit.CFWeekHealthDataType {
+    @objc get
+  }
+  @objc public var daySteps: Swift.Int
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @objcMembers public class CFWeekHeartRateModel : CFDeviceKit.CFWeekHealthDataModel {
+  @objc override public var dataType: CFDeviceKit.CFWeekHealthDataType {
+    @objc get
+  }
+  @objc public var hrValue: Swift.Int
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @objcMembers public class CFWeekBloodOxygenModel : CFDeviceKit.CFWeekHealthDataModel {
+  @objc override public var dataType: CFDeviceKit.CFWeekHealthDataType {
+    @objc get
+  }
+  @objc public var boValue: Swift.Int
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @objcMembers public class CFWeekBloodPresureModel : CFDeviceKit.CFWeekHealthDataModel {
+  @objc override public var dataType: CFDeviceKit.CFWeekHealthDataType {
+    @objc get
+  }
+  @objc public var sbpValue: Swift.Int
+  @objc public var dbpValue: Swift.Int
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @objcMembers public class CFWeekBodyTemperatureModel : CFDeviceKit.CFWeekHealthDataModel {
+  @objc override public var dataType: CFDeviceKit.CFWeekHealthDataType {
+    @objc get
+  }
+  @objc public var btValue: CoreGraphics.CGFloat
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc @objcMembers public class CFReminderModel : ObjectiveC.NSObject {
+  @objc public var call: Swift.Bool
+  @objc public var others: Swift.Bool
+  @objc public init(call: Swift.Bool, others: Swift.Bool)
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc @_hasMissingDesignatedInitializers @objcMembers public class CFConnectionHandler : ObjectiveC.NSObject {
+  @objc public func scanDevice(with deviceType: CFDeviceKit.CFDeviceType)
+  @objc public func stopScan()
+  @objc override dynamic public init()
+  @objc deinit
+}
+extension CFConnectionHandler {
+  @objc dynamic public func connect(deviceModel: CFDeviceKit.CFDeviceModel)
+  @objc dynamic public func disconnect()
+}
+public typealias CFCommandStateCallback = ((CFDeviceKit.CFCommandState) -> Swift.Void)
+public typealias CFSyncDataResponse = (([Swift.String : Any]?, Foundation.NSError?) -> Swift.Void)
+@objc public enum CFDeviceType : Swift.Int {
+  case watch
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum CFConnectionState : Swift.Int {
+  case disconnected
+  case searching
+  case connecting
+  case connected
+  case successfully
+  case readyForUse
+  case failed
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum CFCommandState : Swift.Int {
+  case hasNotSend
+  case writtenSucceed
+  case timedOut
+  case receivedSucceed
+  case failed
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum CFSyncDataType : Swift.Int {
+  case step
+  case sleep
+  case hr
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum CFSyncDataError : Swift.Int {
+  case dataLengthError
+  case requestDataError
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public protocol CFDeviceDelegate {
+  @objc func connectionStateDidChange(deviceModel: CFDeviceKit.CFDeviceModel?, newState: CFDeviceKit.CFConnectionState)
+  @objc optional func didDiscoverDevice(deviceModels: [CFDeviceKit.CFDeviceModel])
+}
+@objc public protocol CFCentralManagerDelegate {
+  @objc optional func centralManagerDidUpdateState(_ central: CoreBluetooth.CBCentralManager)
+  @objc optional func centralManager(_ central: CoreBluetooth.CBCentralManager, didDiscover peripheral: CoreBluetooth.CBPeripheral, advertisementData: [Swift.String : Any], rssi RSSI: Foundation.NSNumber)
+  @objc optional func centralManager(_ central: CoreBluetooth.CBCentralManager, didConnect peripheral: CoreBluetooth.CBPeripheral)
+  @objc optional func centralManager(_ central: CoreBluetooth.CBCentralManager, didDisconnectPeripheral peripheral: CoreBluetooth.CBPeripheral, error: Swift.Error?)
+  @objc optional func centralManager(_ central: CoreBluetooth.CBCentralManager, didFailToConnect peripheral: CoreBluetooth.CBPeripheral, error: Swift.Error?)
+  @objc optional func centralManager(_ central: CoreBluetooth.CBCentralManager, didUpdateANCSAuthorizationFor peripheral: CoreBluetooth.CBPeripheral)
+  @objc optional func centralManager(_ central: CoreBluetooth.CBCentralManager, connectionEventDidOccur event: CoreBluetooth.CBConnectionEvent, for peripheral: CoreBluetooth.CBPeripheral)
+}
+@_hasMissingDesignatedInitializers public class DXQueuesManager {
+  public static func queueForWSCall() -> Foundation.OperationQueue
+  public static func queueForSync() -> Foundation.OperationQueue
+  public static func queueForHealthKit() -> Foundation.OperationQueue
+  public static func queueForActivityData() -> Foundation.OperationQueue
+  @objc deinit
+}
+@objc @objcMembers public class CFMcuDateInfoModel : ObjectiveC.NSObject {
+  @objc public var date: Foundation.Date
+  @objc public init?(date: Foundation.Date?)
+  @objc override dynamic public init()
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objcMembers public class CFUpgradeHandler {
+  @objc deinit
+}
+public enum DXOperationExecutionMode {
+  case serial
+  case parallel
+  public static func == (a: CFDeviceKit.DXOperationExecutionMode, b: CFDeviceKit.DXOperationExecutionMode) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+@objc public class DXProgressOperation : Foundation.Operation {
+  public typealias CompletionBlock = (CFDeviceKit.DXProgressOperation, @escaping (Swift.Bool) -> Swift.Void) -> Swift.Void
+  public var _completionBlock: CFDeviceKit.DXProgressOperation.CompletionBlock?
+  public var isSucceed: Swift.Bool {
+    get
+  }
+  public var failedOperations: [CFDeviceKit.DXProgressOperation] {
+    get
+  }
+  public init(name: Swift.String? = "Default", completionBlock: @escaping CFDeviceKit.DXProgressOperation.CompletionBlock)
+  public init(operationList: [CFDeviceKit.DXProgressOperation], executionMode: CFDeviceKit.DXOperationExecutionMode)
+  @objc override dynamic public var isExecuting: Swift.Bool {
+    @objc get
+    @objc set(newValue)
+  }
+  @objc override dynamic public var isFinished: Swift.Bool {
+    @objc get
+    @objc set(newValue)
+  }
+  @objc override dynamic public var isAsynchronous: Swift.Bool {
+    @objc get
+  }
+  @objc override dynamic public func start()
+  @objc deinit
+  @objc override dynamic public init()
+}
+extension OperationQueue {
+  public func addProgressOperation(operation: CFDeviceKit.DXProgressOperation)
+}
+@_hasMissingDesignatedInitializers @objc public class CFDataSyncHandler : ObjectiveC.NSObject {
+  @objc public func syncData(with dataTypes: [Foundation.NSNumber], beginning: (() -> Swift.Void)?, progress: ((CoreGraphics.CGFloat) -> Swift.Void)?, result: (([Swift.String : Any]?, Foundation.NSError?) -> Swift.Void)?)
+  public func syncData(with dataTypes: [CFDeviceKit.CFSyncDataType], beginning: (() -> Swift.Void)?, progress: ((CoreGraphics.CGFloat) -> Swift.Void)?, result: CFDeviceKit.CFSyncDataResponse?)
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc @objcMembers public class CFSyncDataModel : ObjectiveC.NSObject {
+  public var dataType: CFDeviceKit.CFSyncDataType!
+  @objc public var timeInterval: Swift.Double
+  @objc public var value: Swift.Int
+  @objc public init(dataType: CFDeviceKit.CFSyncDataType, timeInterval: Foundation.TimeInterval, value: Swift.Int)
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc public enum CFAlarmRepeatDay : Swift.Int {
+  case Sun = 0
+  case Mon = 1
+  case Tue = 2
+  case Wed = 3
+  case Thu = 4
+  case Fri = 5
+  case Sat = 6
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc @_inheritsConvenienceInitializers @objcMembers public class CFAlarmClockModel : ObjectiveC.NSObject {
+  @objc public var index: Swift.Int
+  @objc public var activated: Swift.Bool
+  @objc public var hour: Swift.Int
+  @objc public var minute: Swift.Int
+  public var repeatDays: [CFDeviceKit.CFAlarmRepeatDay]
+  @objc public var repeatDaysWithNumbers: [Foundation.NSNumber]
+  @objc override dynamic public init()
+  @objc deinit
+}
+open class CFRepeater : Swift.Equatable {
+  public enum State : Swift.Equatable, Swift.CustomStringConvertible {
+    case paused
+    case running
+    case executing
+    case finished
+    public static func == (lhs: CFDeviceKit.CFRepeater.State, rhs: CFDeviceKit.CFRepeater.State) -> Swift.Bool
+    public var isRunning: Swift.Bool {
+      get
+    }
+    public var isExecuting: Swift.Bool {
+      get
+    }
+    public var isFinished: Swift.Bool {
+      get
+    }
+    public var description: Swift.String {
+      get
+    }
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public enum Interval {
+    case nanoseconds(Swift.Int)
+    case microseconds(Swift.Int)
+    case milliseconds(Swift.Int)
+    case minutes(Swift.Int)
+    case seconds(Swift.Double)
+    case hours(Swift.Int)
+    case days(Swift.Int)
+  }
+  public enum Mode {
+    case infinite
+    case finite(Swift.Int)
+    case once
+    public var countIterations: Swift.Int? {
+      get
+    }
+    public var isInfinite: Swift.Bool {
+      get
+    }
+  }
+  public typealias Observer = ((CFDeviceKit.CFRepeater) -> Swift.Void)
+  public typealias ObserverToken = Swift.UInt64
+  public var state: CFDeviceKit.CFRepeater.State {
+    get
+  }
+  public var onStateChanged: ((CFDeviceKit.CFRepeater, CFDeviceKit.CFRepeater.State) -> Swift.Void)?
+  public var mode: CFDeviceKit.CFRepeater.Mode {
+    get
+  }
+  public var remainingIterations: Swift.Int? {
+    get
+  }
+  public init(interval: CFDeviceKit.CFRepeater.Interval, mode: CFDeviceKit.CFRepeater.Mode = .infinite, tolerance: Dispatch.DispatchTimeInterval = .nanoseconds(0), queue: Dispatch.DispatchQueue? = nil, observer: @escaping CFDeviceKit.CFRepeater.Observer)
+  @discardableResult
+  public func observe(_ observer: @escaping CFDeviceKit.CFRepeater.Observer) -> CFDeviceKit.CFRepeater.ObserverToken
+  public func remove(observer identifier: CFDeviceKit.CFRepeater.ObserverToken)
+  public func removeAllObservers(thenStop stopTimer: Swift.Bool = false)
+  @discardableResult
+  public class func once(after interval: CFDeviceKit.CFRepeater.Interval, tolerance: Dispatch.DispatchTimeInterval = .nanoseconds(0), queue: Dispatch.DispatchQueue? = nil, _ observer: @escaping CFDeviceKit.CFRepeater.Observer) -> CFDeviceKit.CFRepeater
+  @discardableResult
+  public class func every(_ interval: CFDeviceKit.CFRepeater.Interval, count: Swift.Int? = nil, tolerance: Dispatch.DispatchTimeInterval = .nanoseconds(0), queue: Dispatch.DispatchQueue? = nil, _ handler: @escaping CFDeviceKit.CFRepeater.Observer) -> CFDeviceKit.CFRepeater
+  public func fire(andPause pause: Swift.Bool = false)
+  public func reset(_ interval: CFDeviceKit.CFRepeater.Interval?, restart: Swift.Bool = true)
+  @discardableResult
+  public func start() -> Swift.Bool
+  @discardableResult
+  public func pause() -> Swift.Bool
+  @objc deinit
+  public static func == (lhs: CFDeviceKit.CFRepeater, rhs: CFDeviceKit.CFRepeater) -> Swift.Bool
+}
+@objc public enum CFSystemInfoType : Swift.Int {
+  case category
+  case udid
+  case otaProjectName
+  case otaBranchName
+  case fwVersion
+  case compiledDate
+  case compiledTime
+  case compiledBatchNum
+  case systemType
+  case broadcastName
+  case macAddress
+  case bindingState
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum CFSystemType : Swift.UInt8 {
+  case iOS = 0x00
+  case Android = 0x01
+  case Others = 0xff
+  public init?(rawValue: Swift.UInt8)
+  public typealias RawValue = Swift.UInt8
+  public var rawValue: Swift.UInt8 {
+    get
+  }
+}
+@objc @_inheritsConvenienceInitializers @objcMembers public class CFSystemInfomationModel : ObjectiveC.NSObject {
+  @objc public var category: Swift.String?
+  @objc public var udid: Swift.String?
+  @objc public var otaName: Swift.String?
+  @objc public var fwVersion: Swift.String?
+  @objc public var compiledDate: Swift.String?
+  @objc public var compiledTime: Swift.String?
+  @objc public var compiledBatchNum: Swift.String?
+  @objc public var systemType: CFDeviceKit.CFSystemType
+  @objc public var broadcastName: Swift.String?
+  @objc public var macAddress: Swift.String?
+  @objc public var isBinded: Swift.Bool
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc @objcMembers public class CFReminderIntervalModel : ObjectiveC.NSObject {
+  @objc public var interval: Swift.Int
+  @objc public init(interval: Swift.Int)
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @objcMembers public class CFSystemSettingsModel : ObjectiveC.NSObject {
+  @objc public var raiseToWake: Swift.Bool
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @objcMembers public class CFMotorUsageModel : ObjectiveC.NSObject {
+  @objc public var vibratedDuration: Swift.Double
+  @objc public var vibratedTimesForReminder: Swift.Double
+  @objc public var vibratedDurationForReminder: Swift.Double
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @objcMembers public class CFScreenUsageModel : ObjectiveC.NSObject {
+  @objc public var screenOnDuration: Swift.Double
+  @objc public var wakeTimesOnRaise: Swift.Double
+  @objc public var wakeDurationOnRaise: Swift.Double
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @objcMembers public class CFHeartRateUsageModel : ObjectiveC.NSObject {
+  @objc public var measureDuration: Swift.Double
+  @objc public var measureTimes: Swift.Double
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @objcMembers public class CFBluetoothUsageModel : ObjectiveC.NSObject {
+  @objc public var broadcastDuration: Swift.Double
+  @objc public var connectionDuration: Swift.Double
+  @objc override dynamic public init()
+  @objc deinit
+}
